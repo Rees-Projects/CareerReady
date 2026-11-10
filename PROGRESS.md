@@ -1,13 +1,24 @@
 # CareerReady — Progress & Time Sheet
 
-**Current phase:** Phase 0 — Setup (not started)
-**Next step:** Convert project to Maven + get a JavaFX window running
+**Current phase:** Phase 0 — Setup (in progress)
+**Next step:** Write `App.java` (JavaFX hello window) and run it with `mvn javafx:run`
+
+## Phase 0 Checklist
+
+- [x] Initialize git and push to GitHub (`Rees-Projects/CareerReady`)
+- [x] Convert project to Maven (`pom.xml`, standard folder layout)
+- [x] Install Maven 3.9.9 (in `~/.local/opt`, linked from `~/.local/bin/mvn`)
+- [x] Load the Maven project in IntelliJ
+- [ ] Write `App.java` and get the JavaFX window running
+- [ ] Add `.idea/` and `*.iml` to `.gitignore`
+- [ ] Create the separate `careerready-notes` repo with example notes
+- [ ] Add `sample-notes/` to the app repo
 
 ## Time Sheet
 
 | Date | Hours | Work done |
 |---|---|---|
-| 2026-11-09 | | Planned the project: wrote `PROJECT.md`, decided the notes format, card types, and the two-repo setup. Added `CLAUDE.md` rules and this file. |
+| 2026-11-09 | ~0.7 (18:52–19:34) | Planned the project: wrote `PROJECT.md`, decided the notes format, card types, and the two-repo setup. Added `CLAUDE.md` rules and this file. Pushed to GitHub. Converted to Maven, installed Maven, loaded it in IntelliJ. |
 
 ## Phase Checklist
 
