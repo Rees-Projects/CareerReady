@@ -94,21 +94,33 @@ Kept small on purpose:
       └── 02-Linked-Lists.md
   ```
 
-- Every note follows the same template:
+- Every note follows the same template. The full rules are in **5.1.1 Note Format Spec** below.
 
   ````markdown
   # OOP Basics
 
-  ## Summary
-  A class is a blueprint; an object is an instance of it.
+  ## Big Idea
+  A class is a blueprint; an object is one thing built from it.
+
+  ## Key Terms
+  - **Class**: a blueprint that defines fields and methods
+  - **Object**: an instance of a class, made with `new`
+
+  ## Notes
+  Explanation in my own words, with short examples.
+
+  ## Common Mistakes
+  - Forgetting `new`: `Dog d;` only declares a variable, it makes no object
 
   ## Flashcards
   Q: What are the four pillars of OOP?
   A: Encapsulation, Inheritance, Polymorphism, Abstraction.
 
+  B: A {{constructor}} has the same name as its class.
+
   ## Practice
+  ### Write a Dog class with a private name, a constructor, and a getter
   ```java practice
-  // Write a class Dog with a private name field, a constructor, and a getter
   public class Dog {
       private String name;
       public Dog(String name) { this.name = name; }
@@ -120,6 +132,35 @@ Kept small on purpose:
 - Show notes rendered as Markdown (commonmark → HTML in a JavaFX `WebView`).
 - Search across note titles and content (simple text search is enough at first).
 - Re-scan the folder to pick up changes.
+
+#### 5.1.1 Note Format Spec (v1)
+
+The `.md` file is the source of truth. It must read well on GitHub, be editable by hand, and be safe for the app to read and write back later (a future in-app editor saves the same format). Progress data never goes in notes; it lives in SQLite.
+
+**File and folder rules**
+- Folder = subject (`Intro-to-Java/`). File = topic, numbered for course order (`03-OOP-Basics.md`).
+- Line 1 is `# Topic Title`.
+
+**Sections**: `##` headings, always in this order, spelled exactly like this. Any section may be empty or left out, but no other `##` headings are used.
+
+| Section | What goes in it | What the app does with it |
+|---|---|---|
+| `## Big Idea` | 1–3 sentences, the 30-second version | Shown at the top of the note |
+| `## Key Terms` | `- **Term**: definition`, one per line | Later: auto term/definition cards and multiple choice |
+| `## Notes` | Free Markdown, in my own words | Displayed only, not parsed |
+| `## Common Mistakes` | `- mistake: why / fix`, one per line | Displayed; later a review list |
+| `## Flashcards` | `Q:`/`A:` and `B:` cards | Flashcard study (Phases 2–3) |
+| `## Practice` | `###` prompt followed by a ` ```java practice ` block | Coding drills (Phase 4) |
+
+**Card rules**
+- `Q:` starts a question; the next `A:` starts its answer. An answer can span several lines.
+- **A blank line ends a card.** No blank lines inside a card.
+- `B:` is a one-line fill-in-the-blank card. Each `{{word}}` is a hidden answer.
+- Once written, keep a card's question text the same. Progress is matched by question text, so changing it resets that card.
+
+**Practice rules**
+- Each drill is a `### Prompt` heading directly followed by one ` ```java practice ` block.
+- The prompt is shown, and the code is hidden and used as the answer.
 
 ### 5.2 Flashcards
 
@@ -159,6 +200,7 @@ B: A {{constructor}} has the same name as its class and no return type.
 Code drills are fenced code blocks marked with a tag:
 
 ````markdown
+### Write a Singleton class with a lazy getInstance()
 ```java practice
 public class Singleton {
     private static Singleton instance;
@@ -171,7 +213,7 @@ public class Singleton {
 ```
 ````
 
-- The app shows the drill's **title/prompt** and hides the code.
+- The app shows the drill's `###` prompt and hides the code.
 - The user types the code from memory into a text editor area.
 - **Check** compares the user's code with the original:
   - **v1:** line-by-line comparison that ignores whitespace, with differences highlighted.
